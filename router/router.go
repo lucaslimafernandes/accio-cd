@@ -7,7 +7,9 @@ import (
 
 func SetupRoutes(app *fiber.App) {
 
-	api := app.Group("/api")
+	api := app.Group("")
 	api.Get("/", handler.Hello)
+
+	api.Post("/webhook", handler.WH)
 
 }

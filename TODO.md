@@ -3,10 +3,10 @@
 ## Itens
 
 ### 1. Estrutura Inicial do Projeto
-- [ ] Criar a estrutura de diretórios do projeto (handlers, models, services, etc.).
+- [X] Criar a estrutura de diretórios do projeto (handlers, models, services, etc.).
 
 ### 2. Configurar o Servidor Web
-- [ ] Escolher e configurar um framework web para Golang (Gin, Echo, etc.).
+- [X] Escolher e configurar um framework web para Golang (Gin, Echo, etc.).
 - [ ] Implementar um endpoint de webhook que possa receber requests POST do GitHub.
 
 ### 3. Autenticação de Webhooks
