@@ -1,5 +1,5 @@
 cdrunfile: on-push
-git_url": git://github.com/lucaslimafernandes/test.git
+git_url: git://github.com/lucaslimafernandes/test.git
 
 envs:
   - key: TEST1

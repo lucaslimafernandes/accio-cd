@@ -2,7 +2,10 @@ module github.com/lucaslimafernandes/accio-cd
 
 go 1.22.5
 
-require github.com/gofiber/fiber/v2 v2.52.5
+require (
+	github.com/gofiber/fiber/v2 v2.52.5
+	gopkg.in/yaml.v3 v3.0.1
+)
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
