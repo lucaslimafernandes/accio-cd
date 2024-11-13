@@ -24,11 +24,11 @@ type CDRunfile struct {
 	Tasks  []Task `yaml:"tasks"`
 }
 
-func CDReadRunfile(path *string) (*CDRunfile, error) {
+func CDReadRunfile(path string) (*CDRunfile, error) {
 
 	var runfile CDRunfile
 
-	f, err := os.ReadFile(*path)
+	f, err := os.ReadFile(path)
 	if err != nil {
 		return &runfile, fmt.Errorf("unable to read cdrunfile: %v", err)
 	}
