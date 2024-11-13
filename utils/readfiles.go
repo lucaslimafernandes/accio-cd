@@ -30,12 +30,12 @@ func CDReadRunfile(path *string) (*CDRunfile, error) {
 
 	f, err := os.ReadFile(*path)
 	if err != nil {
-		return &runfile, fmt.Errorf("unable to read runfile: %v", err)
+		return &runfile, fmt.Errorf("unable to read cdrunfile: %v", err)
 	}
 
 	err = yaml.Unmarshal(f, &runfile)
 	if err != nil {
-		return &runfile, fmt.Errorf("unable to parse runfile, please verify file: %v", err)
+		return &runfile, fmt.Errorf("unable to parse cdrunfile, please verify file: %v", err)
 	}
 
 	return &runfile, nil
