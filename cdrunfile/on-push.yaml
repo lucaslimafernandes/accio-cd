@@ -1,0 +1,21 @@
+cdrunfile: on-push
+git_url": git://github.com/lucaslimafernandes/test.git
+
+envs:
+  - key: TEST1
+    value: VALUE_1
+
+  - key: TEST2
+    value: VALUE_2
+
+tasks:
+  - name: pull
+    node: 
+      - localhost
+    command: git pull
+
+  - name: git status
+    node: 
+      - localhost
+    command: git status
+
