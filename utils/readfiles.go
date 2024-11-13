@@ -18,10 +18,12 @@ type Task struct {
 	Command string   `yaml:"command"`
 }
 type CDRunfile struct {
-	Name   string `yaml:"cdrunfile"`
-	GitUrl string `yaml:"git_url"`
-	Envs   []Envs `yaml:"envs"`
-	Tasks  []Task `yaml:"tasks"`
+	Name      string `yaml:"cdrunfile"`
+	GitUrl    string `yaml:"git_url"`
+	LocalPath string `yaml:"localpath"`
+	On        string `yaml:"on"`
+	Envs      []Envs `yaml:"envs"`
+	Tasks     []Task `yaml:"tasks"`
 }
 
 func CDReadRunfile(path string) (*CDRunfile, error) {

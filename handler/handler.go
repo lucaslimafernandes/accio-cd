@@ -4,13 +4,14 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/lucaslimafernandes/accio-cd/utils"
 )
 
 func Hello(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"status": "success", "message": "Hello i'm ok!", "data": nil})
 }
 
-func WH(c *fiber.Ctx) error {
+func WH(c *fiber.Ctx, cdFile *utils.CDRunfile) error {
 
 	var payload map[string]interface{}
 
@@ -28,5 +29,19 @@ func WH(c *fiber.Ctx) error {
 
 	fmt.Printf("\n\n%v", eventType)
 
+	verify(&eventType, cdFile)
+
 	return c.SendString("Webhook recebido com sucesso!")
+
+}
+
+func verify(event *string, cdFile *utils.CDRunfile) {
+
+	if *event == cdFile.On {
+		fmt.Printf("\nAQUI\n")
+		fmt.Printf("%v - %v\n", *event, cdFile.On)
+	} else {
+		fmt.Printf("\n%v - %v\n", *event, cdFile.On)
+	}
+
 }

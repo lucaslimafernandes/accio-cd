@@ -29,7 +29,7 @@ func main() {
 	app := fiber.New()
 	// app.Use(cors.New())
 
-	router.SetupRoutes(app)
+	router.SetupRoutes(app, CDFile)
 	log.Fatal(app.Listen(":3000"))
 
 }

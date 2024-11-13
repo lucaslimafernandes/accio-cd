@@ -1,5 +1,7 @@
 cdrunfile: on-push
 git_url: git://github.com/lucaslimafernandes/test.git
+localpath: /tmp/test/
+on: push
 
 envs:
   - key: TEST1
@@ -9,6 +11,11 @@ envs:
     value: VALUE_2
 
 tasks:
+  - name: clone
+    node: 
+      - localhost
+    command: git pull
+
   - name: pull
     node: 
       - localhost
