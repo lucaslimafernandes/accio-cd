@@ -11,15 +11,22 @@ func Hello(c *fiber.Ctx) error {
 }
 
 func WH(c *fiber.Ctx) error {
+
 	var payload map[string]interface{}
 
+	eventType := c.Get("X-GitHub-Event", "None")
+
 	// Parse o corpo JSON do webhook
-	if err := c.BodyParser(&payload); err != nil {
+	err := c.BodyParser(&payload)
+	if err != nil {
 		return c.Status(fiber.StatusBadRequest).SendString("Erro ao processar o webhook")
 	}
 
 	// Exiba o payload do webhook
 	fmt.Printf("Recebido webhook: %v\n", payload)
+	fmt.Printf("\n\n%v", string(c.Body()))
+
+	fmt.Printf("\n\n%v", eventType)
 
 	return c.SendString("Webhook recebido com sucesso!")
 }
