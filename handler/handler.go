@@ -13,7 +13,8 @@ func Hello(c *fiber.Ctx) error {
 
 func WH(c *fiber.Ctx, cdFile *utils.CDRunfile) error {
 
-	var payload map[string]interface{}
+	// var payload map[string]interface{}
+	var payload WebhookPayload
 
 	eventType := c.Get("X-GitHub-Event", "None")
 
@@ -24,20 +25,36 @@ func WH(c *fiber.Ctx, cdFile *utils.CDRunfile) error {
 	}
 
 	// Exiba o payload do webhook
-	fmt.Printf("Recebido webhook: %v\n", payload)
-	fmt.Printf("\n\n%v", string(c.Body()))
+	// fmt.Printf("Recebido webhook: %v\n", payload)
+	// fmt.Printf("\n\n%v", string(c.Body()))
 
-	fmt.Printf("\n\n%v", eventType)
+	fmt.Printf("\n\neventType\t%v\n\n", eventType)
 
-	verify(&eventType, cdFile)
+	if verifyURL(cdFile, &payload) {
+
+		verifyEvent(&eventType, cdFile)
+
+	}
 
 	return c.SendString("Webhook recebido com sucesso!")
 
 }
 
-func verify(event *string, cdFile *utils.CDRunfile) {
+func verifyURL(cdFile *utils.CDRunfile, payload *WebhookPayload) bool {
+	return cdFile.GitUrl == payload.Repository.GitURL
+}
+
+func verifyEvent(event *string, cdFile *utils.CDRunfile) {
 
 	if *event == cdFile.On {
+
+		switch cdFile.On {
+		case "push":
+			EventPush()
+		default:
+			fmt.Println("DEFAULT")
+		}
+
 		fmt.Printf("\nAQUI\n")
 		fmt.Printf("%v - %v\n", *event, cdFile.On)
 	} else {

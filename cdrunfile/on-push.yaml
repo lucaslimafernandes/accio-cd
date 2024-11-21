@@ -14,7 +14,7 @@ tasks:
   - name: clone
     node: 
       - localhost
-    command: git pull
+    command: git clone
 
   - name: pull
     node: 
