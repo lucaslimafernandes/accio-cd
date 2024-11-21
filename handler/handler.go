@@ -32,11 +32,14 @@ func WH(c *fiber.Ctx, cdFile *utils.CDRunfile) error {
 
 	if verifyURL(cdFile, &payload) {
 
-		verifyEvent(&eventType, cdFile)
+		msg := verifyEvent(&eventType, cdFile)
+
+		response := fmt.Sprintf("Webhook recebido com sucesso!\t%v", msg)
+		return c.SendString(response)
 
 	}
 
-	return c.SendString("Webhook recebido com sucesso!")
+	return c.SendString("Webhook recebido com sucesso!    - Sem detalhes")
 
 }
 
@@ -44,14 +47,17 @@ func verifyURL(cdFile *utils.CDRunfile, payload *WebhookPayload) bool {
 	return cdFile.GitUrl == payload.Repository.GitURL
 }
 
-func verifyEvent(event *string, cdFile *utils.CDRunfile) {
+func verifyEvent(event *string, cdFile *utils.CDRunfile) string {
 
+	var message string
 	if *event == cdFile.On {
 
 		switch cdFile.On {
 		case "push":
-			EventPush()
+			message = "EventPush()"
+			EventPush(cdFile)
 		default:
+			message = "DEFAULT"
 			fmt.Println("DEFAULT")
 		}
 
@@ -60,5 +66,7 @@ func verifyEvent(event *string, cdFile *utils.CDRunfile) {
 	} else {
 		fmt.Printf("\n%v - %v\n", *event, cdFile.On)
 	}
+
+	return message
 
 }
