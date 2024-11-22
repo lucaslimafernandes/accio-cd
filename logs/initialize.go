@@ -25,6 +25,16 @@ func InitDB() {
 func createTables() {
 
 	query := `
+
+		-- Tabela para armazenar logs
+		CREATE TABLE IF NOT EXISTS logs (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			timestamp DATETIME,
+			level TEXT,
+			status TEXT,
+			message TEXT
+		);
+
 		-- Tabela para armazenar usuários
 		CREATE TABLE IF NOT EXISTS users (
 			email TEXT PRIMARY KEY,

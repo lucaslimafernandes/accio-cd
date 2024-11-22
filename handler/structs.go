@@ -117,3 +117,11 @@ type Repository struct {
 	WatchersCount            int      `json:"watchers_count"`
 	WebCommitSignoffRequired bool     `json:"web_commit_signoff_required"`
 }
+
+type LogEntry struct {
+	ID        int       `json:"id"`
+	Timestamp time.Time `json:"timestamp"`
+	Level     string    `json:"level"`
+	Status    string    `json:"status"`
+	Message   string    `json:"message"`
+}
