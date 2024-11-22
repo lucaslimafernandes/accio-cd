@@ -1,6 +1,6 @@
 cdrunfile: on-push
 git_url: git://github.com/lucaslimafernandes/test.git
-localpath: /tmp/test/
+localpath: /tmp/
 on: push
 
 envs:

@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/lucaslimafernandes/accio-cd/logs"
 	"github.com/lucaslimafernandes/accio-cd/router"
 	"github.com/lucaslimafernandes/accio-cd/utils"
 )
@@ -19,6 +20,9 @@ func init() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	logs.InitDB()
+	defer logs.DB.Close()
 
 }
 
