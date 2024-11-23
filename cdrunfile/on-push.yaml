@@ -1,5 +1,5 @@
 cdrunfile: on-push
-git_url: git://github.com/lucaslimafernandes/test.git
+git_url: git@github.com:lucaslimafernandes/test.git
 localpath: /tmp/
 on: push
 
@@ -16,13 +16,13 @@ tasks:
       - localhost
     command: git clone
 
-  - name: pull
-    node: 
-      - localhost
-    command: git pull
+  # - name: pull
+  #   node: 
+  #     - localhost
+  #   command: git pull
 
-  - name: git status
-    node: 
-      - localhost
-    command: git status
+  # - name: git status
+  #   node: 
+  #     - localhost
+  #   command: git status
 

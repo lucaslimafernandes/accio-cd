@@ -22,7 +22,7 @@ func init() {
 	}
 
 	logs.InitDB()
-	defer logs.DB.Close()
+	// defer logs.DB.Close()
 
 }
 

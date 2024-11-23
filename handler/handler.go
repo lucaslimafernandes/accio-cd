@@ -44,7 +44,7 @@ func WH(c *fiber.Ctx, cdFile *utils.CDRunfile) error {
 }
 
 func verifyURL(cdFile *utils.CDRunfile, payload *WebhookPayload) bool {
-	return cdFile.GitUrl == payload.Repository.GitURL
+	return cdFile.GitUrl == payload.Repository.SSHURL
 }
 
 func verifyEvent(event *string, cdFile *utils.CDRunfile) string {

@@ -3,11 +3,18 @@ package logs
 import (
 	"database/sql"
 	"log"
-
-	"github.com/lucaslimafernandes/accio-cd/handler"
+	"time"
 )
 
-func InsertLog(db *sql.DB, l *handler.LogEntry) {
+type LogEntry struct {
+	ID        int       `json:"id"`
+	Timestamp time.Time `json:"timestamp"`
+	Level     string    `json:"level"`
+	Status    string    `json:"status"`
+	Message   string    `json:"message"`
+}
+
+func InsertLog(db *sql.DB, l *LogEntry) {
 
 	query := `INSERT INTO logs (timestamp, level, status, message) VALUES (?, ?, ?, ?)`
 
